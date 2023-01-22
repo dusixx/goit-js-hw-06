@@ -1,3 +1,17 @@
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-}
+import { default as utils } from "./utils.js";
+
+const refs = {
+  body: document.body,
+  colorSpan: document.querySelector(".color"),
+  colorBtn: document.querySelector(".change-color"),
+};
+
+////////////////////////
+// event handlers
+////////////////////////
+
+const onColorButtonClick = () => {
+  refs.body.style.backgroundColor = refs.colorSpan.textContent = utils.getRandomHexColor();
+};
+
+refs.colorBtn.addEventListener("click", onColorButtonClick);
