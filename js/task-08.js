@@ -1,5 +1,5 @@
 //
-// через elements
+// Вариант 1 (elements)
 //
 const getFormData = form => {
   const formData = {};
@@ -18,7 +18,7 @@ const getFormData = form => {
 };
 
 //
-// через FormData
+// Вариант 2 (FormData)
 //
 const getFormData2 = form => {
   const result = {};
