@@ -10,19 +10,22 @@ const refs = {
   destroyBtn: controlsRef.children[2],
 };
 
-const createBoxes = (amount = 0, initialSize = 30) =>
+const createBoxes = (amount = 0) => {
+  const INITIAL_SIZE = 30;
+
   // amount приходит числовой строкой
-  Array(amount)
+  return Array(amount)
     .fill()
     .map((_, idx) => {
       const box = document.createElement("div");
       const { style } = box;
 
-      style.width = style.height = `${initialSize + idx * 10}px`;
+      style.width = style.height = `${INITIAL_SIZE + idx * 10}px`;
       style.backgroundColor = utils.getRandomHexColor();
 
       return box;
     });
+};
 
 const destroyBoxes = ref => {
   ref.innerHTML = "";
