@@ -1,15 +1,17 @@
+const onFieldValidationError = fieldName => {
+  alert(`Error: No empty fields allowed (${fieldName})`);
+};
+
 //
 // Вариант 1 (elements)
 //
-const getFormData = form => {
+const getFormData = (form, onError) => {
   const formData = {};
 
   for (const { tagName, value, name } of form.elements) {
     if (tagName.toLowerCase() !== "input") continue;
 
-    if (value.length === 0) {
-      return alert(`Error: No empty fields allowed (${name})`);
-    }
+    if (value.length === 0) return onError(name);
 
     formData[name] = value;
   }
@@ -20,14 +22,12 @@ const getFormData = form => {
 //
 // Вариант 2 (FormData)
 //
-const getFormData2 = form => {
+const getFormData2 = (form, onError) => {
   const result = {};
   const formData = new FormData(form);
 
   for (const [name, value] of formData) {
-    if (value.length === 0) {
-      return alert(`Error: No empty fields allowed (${name})`);
-    }
+    if (value.length === 0) return onError(name);
 
     result[name] = value;
   }
@@ -41,10 +41,14 @@ const getFormData2 = form => {
 
 const onLoginFormSubmit = event => {
   event.preventDefault();
-  const { currentTarget: form } = event;
 
-  console.log("formData", getFormData2(form));
-  form.reset();
+  const { currentTarget: form } = event;
+  const formData = getFormData2(form, onFieldValidationError);
+
+  if (formData) {
+    console.log("formData");
+    form.reset();
+  }
 };
 
 document.querySelector(".login-form").addEventListener("submit", onLoginFormSubmit);
