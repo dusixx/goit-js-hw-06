@@ -1,4 +1,4 @@
-const onFieldValidationError = fieldName => {
+const onValidationError = fieldName => {
   alert(`Error: No empty fields allowed (${fieldName})`);
 };
 
@@ -43,7 +43,7 @@ const onLoginFormSubmit = event => {
   event.preventDefault();
 
   const { currentTarget: form } = event;
-  const formData = getFormData2(form, onFieldValidationError);
+  const formData = getFormData2(form, onValidationError);
 
   if (formData) {
     console.log("formData");
