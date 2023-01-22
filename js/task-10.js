@@ -24,16 +24,17 @@ const createBoxes = (amount = 0, initialSize = 30) =>
       return box;
     });
 
-const destroyBoxes = ref => (ref.innerHTML = "");
+const destroyBoxes = ref => {
+  ref.innerHTML = "";
+  return ref;
+};
 
 ////////////////////////
 // event handlers
 ////////////////////////
 
 const onCreateButtonClick = () => {
-  // заполняем div.boxes, очищая текущий контент
-  if (refs.boxes.innerHTML.length > 0) destroyBoxes(refs.boxes);
-  refs.boxes.append(...createBoxes(+refs.amountInput.value));
+  destroyBoxes(refs.boxes).append(...createBoxes(+refs.amountInput.value));
 };
 
 const onDestroyButtonClick = () => {
