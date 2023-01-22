@@ -46,7 +46,7 @@ const onLoginFormSubmit = event => {
   const formData = getFormData2(form, onValidationError);
 
   if (formData) {
-    console.log("formData");
+    console.log("formData", formData);
     form.reset();
   }
 };
