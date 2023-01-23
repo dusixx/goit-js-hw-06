@@ -18,18 +18,15 @@ const destroyBoxes = ref => {
 const createBoxes = (amount = 0) => {
   const INITIAL_SIZE = 30;
 
-  // amount приходит числовой строкой
-  const boxes = Array(amount)
-    .fill()
-    .map((_, idx) => {
-      const box = document.createElement("div");
-      const { style } = box;
+  const boxes = Array.from({ length: amount }).map((_, idx) => {
+    const box = document.createElement("div");
+    const { style } = box;
 
-      style.width = style.height = `${INITIAL_SIZE + idx * 10}px`;
-      style.backgroundColor = utils.getRandomHexColor();
+    style.width = style.height = `${INITIAL_SIZE + idx * 10}px`;
+    style.backgroundColor = utils.getRandomHexColor();
 
-      return box;
-    });
+    return box;
+  });
 
   destroyBoxes(refs.boxes).append(...boxes);
 };
