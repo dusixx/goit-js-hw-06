@@ -11,6 +11,6 @@ const onFontSizeInputChange = ({ currentTarget: { value } }) => {
   refs.text.style.fontSize = `${value}px`;
 };
 
-// синхронизируем с текущим значением
+// инициализируем текущим значением
 refs.text.style.fontSize = `${refs.fontSizeCtrl.value}px`;
 refs.fontSizeCtrl.addEventListener("input", onFontSizeInputChange);

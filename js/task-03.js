@@ -13,8 +13,10 @@ const images = [
   },
 ];
 
-const makeGalleryMarkup = (images, parentClass) =>
-  images
+const createGallery = (images, parentClass) => {
+  const galleryRef = document.querySelector(`.${parentClass}`);
+
+  const markup = images
     .map(({ url, alt }) => {
       const itemClassStr = parentClass ? `class="${parentClass}__item"` : "";
       const imgClassStr = parentClass ? `class="${parentClass}__img"` : "";
@@ -25,6 +27,7 @@ const makeGalleryMarkup = (images, parentClass) =>
     })
     .join("\n");
 
-document
-  .querySelector(".gallery")
-  ?.insertAdjacentHTML("afterbegin", makeGalleryMarkup(images, "gallery"));
+  galleryRef.insertAdjacentHTML("afterbegin", markup);
+};
+
+createGallery(images, "gallery");

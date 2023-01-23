@@ -10,11 +10,16 @@ const refs = {
   destroyBtn: controlsRef.children[2],
 };
 
+const destroyBoxes = ref => {
+  ref.innerHTML = "";
+  return ref;
+};
+
 const createBoxes = (amount = 0) => {
   const INITIAL_SIZE = 30;
 
   // amount приходит числовой строкой
-  return Array(amount)
+  const boxes = Array(amount)
     .fill()
     .map((_, idx) => {
       const box = document.createElement("div");
@@ -25,27 +30,19 @@ const createBoxes = (amount = 0) => {
 
       return box;
     });
-};
 
-const destroyBoxes = ref => {
-  ref.innerHTML = "";
-  return ref;
+  destroyBoxes(refs.boxes).append(...boxes);
 };
 
 ////////////////////////
 // event handlers
 ////////////////////////
 
-const onCreateButtonClick = () => {
-  destroyBoxes(refs.boxes).append(...createBoxes(+refs.amountInput.value));
-};
-
-const onDestroyButtonClick = () => {
-  destroyBoxes(refs.boxes);
-};
+const onCreateButtonClick = () => createBoxes(+refs.amountInput.value);
+const onDestroyButtonClick = () => destroyBoxes(refs.boxes);
 
 const onAmountInputChange = ({ currentTarget: amountInput }) => {
-  const { value, max, min } = amountInput;
+  const { min, value, max } = amountInput;
   // корректируем введенное значение
   amountInput.value = Math.max(min, Math.min(max, value));
 };
@@ -55,7 +52,7 @@ const onAmountInputChange = ({ currentTarget: amountInput }) => {
 ////////////////////////
 
 // initial value
-refs.amountInput.value = +refs.amountInput.min || 1;
+refs.amountInput.value = 10; // +refs.amountInput.min || 1;
 
 refs.amountInput.addEventListener("input", onAmountInputChange);
 refs.createBtn.addEventListener("click", onCreateButtonClick);

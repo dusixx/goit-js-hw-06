@@ -105,3 +105,4 @@ dist
 
 #arcs
 *.zip
+test.js
