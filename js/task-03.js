@@ -15,16 +15,16 @@ const images = [
 
 const createGallery = (images, parentClass) => {
   const galleryRef = document.querySelector(`.${parentClass}`);
+  const itemClass = parentClass ? `class="${parentClass}__item"` : "";
+  const imgClass = parentClass ? `class="${parentClass}__img"` : "";
 
   const markup = images
-    .map(({ url, alt }) => {
-      const itemClassStr = parentClass ? `class="${parentClass}__item"` : "";
-      const imgClassStr = parentClass ? `class="${parentClass}__img"` : "";
-
-      return `<li ${itemClassStr}>
-                <img ${imgClassStr}" src="${url}" alt="${alt}">
-              </li>`;
-    })
+    .map(
+      ({ url, alt }) =>
+        `<li ${itemClass}>
+           <img ${imgClass}" src="${url}" alt="${alt}">
+         </li>`,
+    )
     .join("\n");
 
   galleryRef.insertAdjacentHTML("afterbegin", markup);
