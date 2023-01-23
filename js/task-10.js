@@ -28,19 +28,23 @@ const createBoxes = (amount = 0) => {
     return box;
   });
 
-  destroyBoxes(refs.boxes).append(...boxes);
+  refs.boxes.append(...boxes);
 };
 
 ////////////////////////
 // event handlers
 ////////////////////////
 
-const onCreateButtonClick = () => createBoxes(+refs.amountInput.value);
+const onCreateButtonClick = () => {
+  destroyBoxes(refs.boxes);
+  createBoxes(+refs.amountInput.value);
+};
+
 const onDestroyButtonClick = () => destroyBoxes(refs.boxes);
 
 const onAmountInputChange = ({ currentTarget: amountInput }) => {
   const { min, value, max } = amountInput;
-  // корректируем введенное значение
+  // min <= value <= max
   amountInput.value = Math.max(min, Math.min(max, value));
 };
 
