@@ -51,4 +51,4 @@ const onLoginFormSubmit = event => {
   }
 };
 
-document.querySelector(".login-form").addEventListener("submit", onLoginFormSubmit);
+document.querySelector(".login-form")?.addEventListener("submit", onLoginFormSubmit);
