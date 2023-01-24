@@ -1,5 +1,8 @@
-const onValidationError = fieldName => {
-  alert(`Error: No empty fields allowed (${fieldName})`);
+const onValidationError = (fieldName, fieldValue) => {
+  if (fieldValue.length === 0) {
+    alert(`Error: No empty fields allowed (${fieldName})`);
+    return true;
+  }
 };
 
 const getFormData = (form, onValidationError) => {
@@ -7,7 +10,7 @@ const getFormData = (form, onValidationError) => {
   const formData = new FormData(form);
 
   for (const [name, value] of formData) {
-    if (value.length === 0) return onValidationError(name); // undefined
+    if (onValidationError(name, value)) return null;
 
     result[name] = value;
   }
