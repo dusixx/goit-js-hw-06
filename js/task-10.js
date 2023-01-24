@@ -10,12 +10,12 @@ const refs = {
   destroyBtn: controlsRef.children[2],
 };
 
-const destroyBoxes = ref => {
-  ref.innerHTML = "";
-  return ref;
+const destroyBoxes = rootRef => {
+  rootRef.innerHTML = "";
+  return rootRef;
 };
 
-const createBoxes = (amount = 0) => {
+const createBoxes = (amount = 1, rootRef) => {
   const INITIAL_SIZE = 30;
 
   const boxes = Array.from({ length: amount }).map((_, idx) => {
@@ -28,7 +28,7 @@ const createBoxes = (amount = 0) => {
     return box;
   });
 
-  refs.boxes.append(...boxes);
+  rootRef?.append(...boxes);
 };
 
 ////////////////////////
@@ -36,8 +36,7 @@ const createBoxes = (amount = 0) => {
 ////////////////////////
 
 const onCreateButtonClick = () => {
-  // destroyBoxes(refs.boxes);
-  createBoxes(+refs.amountInput.value);
+  createBoxes(+refs.amountInput.value, refs.boxes);
 };
 
 const onDestroyButtonClick = () => {
@@ -49,7 +48,6 @@ const onDestroyButtonClick = () => {
 
 const onAmountInputChange = ({ currentTarget: amountInput }) => {
   const { min, value, max } = amountInput;
-  // корректируем введенное значение
   amountInput.value = Math.max(min, Math.min(max, value));
 };
 
