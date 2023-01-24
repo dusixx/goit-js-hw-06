@@ -1,21 +1,10 @@
-const makeDescription = () => {
-  const { children: categories } = document.querySelector("#categories");
-  const desc = [];
+const items = Array.from(document.querySelector("#categories").children);
 
-  desc.push(`Number of categories: ${categories.length}\n`);
+console.log(`Number of categories: ${items.length}\n`);
 
-  for (const category of categories) {
-    const {
-      firstElementChild: { textContent: categoryTitle },
-      lastElementChild: {
-        children: { length: elementsCount },
-      },
-    } = category;
-
-    desc.push(`Category: ${categoryTitle}`, `Elements: ${elementsCount}\n`);
-  }
-
-  return desc.join("\n");
-};
-
-console.log(makeDescription());
+items.forEach(({ firstElementChild, lastElementChild }) =>
+  console.log(
+    `Category: ${firstElementChild.textContent}`,
+    `\nElements: ${lastElementChild.children.length}`,
+  ),
+);

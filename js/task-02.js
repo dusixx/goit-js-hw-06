@@ -1,16 +1,16 @@
 const ingredients = ["Potatoes", "Mushrooms", "Garlic", "Tomatos", "Herbs", "Condiments"];
 
-const createList = (ingredients, listSelector) => {
+const fillList = (listSelector, ingredients) => {
   const items = ingredients.map(name => {
-    const li = document.createElement("li");
+    const listItem = document.createElement("li");
 
-    li.textContent = name;
-    li.classList.add("item");
+    listItem.textContent = name;
+    listItem.classList.add("item");
 
-    return li;
+    return listItem;
   });
 
   document.querySelector(listSelector)?.append(...items);
 };
 
-createList(ingredients, "#ingredients");
+fillList("#ingredients", ingredients);

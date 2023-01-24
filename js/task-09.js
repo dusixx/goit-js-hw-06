@@ -6,10 +6,6 @@ const refs = {
   colorBtn: document.querySelector(".change-color"),
 };
 
-////////////////////////
-// event handlers
-////////////////////////
-
 const onColorButtonClick = () => {
   refs.body.style.backgroundColor = refs.colorSpan.textContent = utils.getRandomHexColor();
 };

@@ -36,15 +36,20 @@ const createBoxes = (amount = 0) => {
 ////////////////////////
 
 const onCreateButtonClick = () => {
-  destroyBoxes(refs.boxes);
+  // destroyBoxes(refs.boxes);
   createBoxes(+refs.amountInput.value);
 };
 
-const onDestroyButtonClick = () => destroyBoxes(refs.boxes);
+const onDestroyButtonClick = () => {
+  const INITIAL_AMOUNT = 1;
+
+  refs.amountInput.value = +refs.amountInput.min || INITIAL_AMOUNT;
+  destroyBoxes(refs.boxes);
+};
 
 const onAmountInputChange = ({ currentTarget: amountInput }) => {
   const { min, value, max } = amountInput;
-  // min <= value <= max
+  // корректируем введенное значение
   amountInput.value = Math.max(min, Math.min(max, value));
 };
 
@@ -52,8 +57,7 @@ const onAmountInputChange = ({ currentTarget: amountInput }) => {
 // main
 ////////////////////////
 
-// initial value
-refs.amountInput.value = 10; // +refs.amountInput.min || 1;
+refs.amountInput.value = 5;
 
 refs.amountInput.addEventListener("input", onAmountInputChange);
 refs.createBtn.addEventListener("click", onCreateButtonClick);

@@ -12,4 +12,8 @@ export default {
   capitalize(v) {
     return this.isStr(v) ? v[0].toUpperCase() + v.slice(1) : v;
   },
+
+  replaceClass({ classList }, oldClass, newClass) {
+    if (!classList.replace(oldClass, newClass)) classList.add(newClass);
+  },
 };
