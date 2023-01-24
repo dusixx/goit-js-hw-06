@@ -15,7 +15,7 @@ const destroyBoxes = rootRef => {
   return rootRef;
 };
 
-const createBoxes = (amount = 1, rootRef) => {
+const createBoxes = (amount, rootRef) => {
   const INITIAL_SIZE = 30;
 
   const boxes = Array.from({ length: amount }).map((_, idx) => {
