@@ -1,6 +1,7 @@
 const onValidationError = (fieldName, fieldValue) => {
   if (fieldValue.length === 0) {
     alert(`Error: No empty fields allowed (${fieldName})`);
+
     return true;
   }
 };
