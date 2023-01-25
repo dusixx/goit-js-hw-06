@@ -5,7 +5,7 @@ const controlsRef = document.querySelector("#controls");
 const refs = {
   boxes: document.querySelector("#boxes"),
   controls: controlsRef,
-  amountInput: controlsRef.firstElementChild,
+  amountInput: controlsRef.children[0],
   createBtn: controlsRef.children[1],
   destroyBtn: controlsRef.children[2],
 };
@@ -38,13 +38,13 @@ const createBoxes = (amount, rootRef) => {
 ////////////////////////
 
 const onCreateButtonClick = () => {
-  createBoxes(+refs.amountInput.value, refs.boxes);
+  createBoxes(refs.amountInput.value, refs.boxes);
 };
 
 const onDestroyButtonClick = () => {
   const INITIAL_AMOUNT = 1;
 
-  refs.amountInput.value = +refs.amountInput.min || INITIAL_AMOUNT;
+  refs.amountInput.value = refs.amountInput.min || INITIAL_AMOUNT;
   destroyBoxes(refs.boxes);
 };
 
