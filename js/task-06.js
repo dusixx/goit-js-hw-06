@@ -3,7 +3,7 @@ import { default as utils } from "./utils.js";
 //
 // Вариант 1
 //
-const onValidationInputBlur = ({ currentTarget: inputRef }) => {
+const onInputBlur = ({ currentTarget: inputRef }) => {
   const validLen = Number(inputRef.dataset.length);
   const currentLen = inputRef.value.length;
 
@@ -18,7 +18,7 @@ const onValidationInputBlur = ({ currentTarget: inputRef }) => {
   }
 };
 
-document.querySelector("#validation-input")?.addEventListener("blur", onValidationInputBlur);
+document.querySelector("#validation-input")?.addEventListener("blur", onInputBlur);
 
 //
 // Вариант 2

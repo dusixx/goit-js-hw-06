@@ -23,7 +23,7 @@ const getFormData = (form, onValidationError) => {
 // event handlers
 ////////////////////////
 
-const onLoginFormSubmit = event => {
+const onFormSubmit = event => {
   event.preventDefault();
 
   const { currentTarget: form } = event;
@@ -35,4 +35,4 @@ const onLoginFormSubmit = event => {
   }
 };
 
-document.querySelector(".login-form")?.addEventListener("submit", onLoginFormSubmit);
+document.querySelector(".login-form")?.addEventListener("submit", onFormSubmit);

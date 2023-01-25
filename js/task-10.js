@@ -29,6 +29,8 @@ const createBoxes = (amount, rootRef) => {
   });
 
   rootRef?.append(...boxes);
+
+  return boxes;
 };
 
 ////////////////////////

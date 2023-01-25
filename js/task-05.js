@@ -7,9 +7,9 @@ const refs = {
   nameOutput: document.querySelector("#name-output"),
 };
 
-const onNameInputChange = ({ currentTarget: nameInputRef }) => {
+const onNameInput = ({ currentTarget: nameInputRef }) => {
   const newName = utils.capitalize(nameInputRef.value.trim());
   refs.nameOutput.textContent = newName || DEFAULT_USERNAME;
 };
 
-refs.nameInput.addEventListener("input", onNameInputChange);
+refs.nameInput.addEventListener("input", onNameInput);
