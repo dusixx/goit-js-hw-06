@@ -10,7 +10,7 @@ export default {
   },
 
   capitalize(v) {
-    return this.isStr(v) ? v[0].toUpperCase() + v.slice(1) : v;
+    return this.isStr(v) && v ? v[0].toUpperCase() + v.slice(1) : v;
   },
 
   replaceClass({ classList }, oldClass, newClass) {
