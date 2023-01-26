@@ -15,22 +15,48 @@ const destroyBoxes = rootRef => {
   return rootRef;
 };
 
+//
+// Вариант 1
+//
+// const createBoxes = (amount, rootRef) => {
+//   const INITIAL_SIZE = 30;
+
+//   const boxes = Array.from({ length: amount }).map((_, idx) => {
+//     const box = document.createElement("div");
+//     const { style } = box;
+
+//     style.width = style.height = `${INITIAL_SIZE + idx * 10}px`;
+//     style.backgroundColor = utils.getRandomHexColor();
+
+//     return box;
+//   });
+
+//   rootRef?.append(...boxes);
+
+//   return boxes;
+// };
+
+//
+// Вариант 2
+//
 const createBoxes = (amount, rootRef) => {
   const INITIAL_SIZE = 30;
 
-  const boxes = Array.from({ length: amount }).map((_, idx) => {
-    const box = document.createElement("div");
-    const { style } = box;
+  const markup = Array.from({ length: amount })
+    .map((_, idx) => {
+      const size = `${INITIAL_SIZE + idx * 10}px`;
+      const color = utils.getRandomHexColor();
 
-    style.width = style.height = `${INITIAL_SIZE + idx * 10}px`;
-    style.backgroundColor = utils.getRandomHexColor();
+      return `
+        <div style="
+          width: ${size}; 
+          height: ${size}; 
+          background-color: ${color}">
+        </div>`;
+    })
+    .join("");
 
-    return box;
-  });
-
-  rootRef?.append(...boxes);
-
-  return boxes;
+  rootRef?.insertAdjacentHTML("beforeend", markup);
 };
 
 ////////////////////////
