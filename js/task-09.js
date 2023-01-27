@@ -7,7 +7,10 @@ const refs = {
 };
 
 const onColorButtonClick = () => {
-  refs.body.style.backgroundColor = refs.colorSpan.textContent = utils.getRandomHexColor();
+  const hexColor = utils.getRandomHexColor();
+  
+  refs.body.style.backgroundColor = hexColor;
+  refs.colorSpan.textContent = hexColor;
 };
 
 refs.colorBtn.addEventListener("click", onColorButtonClick);
