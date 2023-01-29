@@ -26,7 +26,8 @@ const createGallery = (images, parentClass) => {
     )
     .join("");
 
-  galleryRef.insertAdjacentHTML("afterbegin", markup);
+  // добавляем в конец
+  galleryRef.insertAdjacentHTML("beforeend", markup);
 
   return galleryRef;
 };
