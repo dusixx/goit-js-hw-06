@@ -14,19 +14,17 @@ const destroyBoxes = rootRef => (rootRef.innerHTML = "");
 const createBoxes = (amount, rootRef) => {
   const INITIAL_SIZE = 30;
 
-  const markup = Array.from({ length: amount })
-    .map((_, idx) => {
-      const size = `${INITIAL_SIZE + idx * 10}px`;
-      const color = utils.getRandomHexColor();
+  const markup = Array.from({ length: amount }, (_, idx) => {
+    const size = `${INITIAL_SIZE + idx * 10}px`;
+    const color = utils.getRandomHexColor();
 
-      return `
+    return `
         <div style="
           width: ${size}; 
           height: ${size}; 
           background-color: ${color}">
         </div>`;
-    })
-    .join("");
+  }).join("");
 
   rootRef?.insertAdjacentHTML("beforeend", markup);
 };

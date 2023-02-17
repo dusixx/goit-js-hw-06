@@ -1,16 +1,11 @@
 import { utils } from "./utils.js";
 
-const refs = {
-  body: document.body,
-  colorSpan: document.querySelector(".color"),
-  colorBtn: document.querySelector(".change-color"),
-};
+const colorSpanRef = document.querySelector(".color");
 
-const onColorButtonClick = () => {
-  const hexColor = utils.getRandomHexColor();
-
-  refs.body.style.backgroundColor = hexColor;
-  refs.colorSpan.textContent = hexColor;
-};
-
-refs.colorBtn.addEventListener("click", onColorButtonClick);
+document
+  .querySelector(".change-color")
+  ?.addEventListener(
+    "click",
+    () =>
+      (document.body.style.backgroundColor = colorSpanRef.textContent = utils.getRandomHexColor()),
+  );

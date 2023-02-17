@@ -12,7 +12,6 @@ const getFormData = (form, onValidationError) => {
 
   for (const [name, value] of formData) {
     if (onValidationError(name, value)) return null;
-
     result[name] = value;
   }
 
