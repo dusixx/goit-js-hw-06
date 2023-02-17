@@ -1,21 +1,21 @@
 import { utils } from "./utils.js";
 
-const onInputBlur = ({ currentTarget: inputRef }) => {
-  const validLen = Number(inputRef.dataset.length);
-  const currentLen = inputRef.value.length;
+document
+  .querySelector("#validation-input")
+  ?.addEventListener("blur", ({ currentTarget: inputRef }) => {
+    const validLen = Number(inputRef.dataset.length);
+    const currentLen = inputRef.value.length;
 
-  if (currentLen === 0) return inputRef.classList.remove("valid", "invalid");
+    if (currentLen === 0) return inputRef.classList.remove("valid", "invalid");
 
-  const cls = currentLen === validLen ? "invalid valid" : "valid invalid";
-  utils.replaceClass(inputRef, ...cls.split(" "));
-};
-
-document.querySelector("#validation-input")?.addEventListener("blur", onInputBlur);
+    const cls = currentLen === validLen ? "invalid valid" : "valid invalid";
+    utils.replaceClass(inputRef, ...cls.split(" "));
+  });
 
 //
 // Вариант 2
 //
-// const onValidationInputBlur2 = ({ currentTarget: inputRef }) => {
+// const onInputBlur = ({ currentTarget: inputRef }) => {
 //   const COLOR_VALID = "#4caf50";
 //   const COLOR_INVALID = "#f44336";
 
@@ -26,4 +26,4 @@ document.querySelector("#validation-input")?.addEventListener("blur", onInputBlu
 //     currentLen === 0 ? null : currentLen === validLen ? COLOR_VALID : COLOR_INVALID;
 // };
 
-// document.querySelector("#validation-input")?.addEventListener("blur", onValidationInputBlur);
+// document.querySelector("#validation-input")?.addEventListener("blur", onInputBlur);
