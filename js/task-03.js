@@ -2,7 +2,8 @@ import { galleryItems } from "./utils.js";
 
 const createGallery = (images, parentClass) => {
   const galleryRef = document.querySelector(`.${parentClass}`);
-  if (!galleryRef) return;
+
+  if (!galleryRef) return null;
 
   galleryRef.insertAdjacentHTML(
     "beforeend",
