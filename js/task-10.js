@@ -9,43 +9,40 @@ const refs = {
   destroyBtn: controlsRef.children[2],
 };
 
-const destroyBoxes = rootRef => (rootRef.innerHTML = "");
-
 const createBoxes = (amount, rootRef) => {
   const INITIAL_SIZE = 30;
+  const SIZE_INC = 10;
 
-  const markup = Array.from({ length: amount }, (_, idx) => {
-    const size = `${INITIAL_SIZE + idx * 10}px`;
-    const color = utils.getRandomHexColor();
+  rootRef?.insertAdjacentHTML(
+    "beforeend",
+    Array.from({ length: amount }, (_, idx) => {
+      const size = `${INITIAL_SIZE + idx * SIZE_INC}px`;
+      const color = utils.getRandomHexColor();
 
-    return `
+      return `
         <div style="
           width: ${size}; 
           height: ${size}; 
           background-color: ${color}">
         </div>`;
-  }).join("");
-
-  rootRef?.insertAdjacentHTML("beforeend", markup);
+    }).join(""),
+  );
 };
 
-const onCreateButtonClick = () => {
+const destroyBoxes = rootRef => (rootRef.innerHTML = "");
+
+refs.amountInput.addEventListener("input", ({ currentTarget: amountInput }) => {
+  const { min, value, max } = amountInput;
+  amountInput.value = Math.max(min, Math.min(max, value));
+});
+
+refs.createBtn.addEventListener("click", () => {
   createBoxes(refs.amountInput.value, refs.boxes);
-};
+});
 
-const onDestroyButtonClick = () => {
+refs.destroyBtn.addEventListener("click", () => {
   const INITIAL_AMOUNT = 1;
 
   refs.amountInput.value = refs.amountInput.min || INITIAL_AMOUNT;
   destroyBoxes(refs.boxes);
-};
-
-const onAmountInputChange = ({ currentTarget: amountInput }) => {
-  const { min, value, max } = amountInput;
-  amountInput.value = Math.max(min, Math.min(max, value));
-};
-
-refs.amountInput.value = 5;
-refs.amountInput.addEventListener("input", onAmountInputChange);
-refs.createBtn.addEventListener("click", onCreateButtonClick);
-refs.destroyBtn.addEventListener("click", onDestroyButtonClick);
+});
