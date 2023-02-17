@@ -49,24 +49,3 @@ refs.amountInput.value = 5;
 refs.amountInput.addEventListener("input", onAmountInputChange);
 refs.createBtn.addEventListener("click", onCreateButtonClick);
 refs.destroyBtn.addEventListener("click", onDestroyButtonClick);
-
-//
-// Вариант 2
-//
-// const createBoxes = (amount, rootRef) => {
-//   const INITIAL_SIZE = 30;
-
-//   const boxes = Array.from({ length: amount }).map((_, idx) => {
-//     const box = document.createElement("div");
-//     const { style } = box;
-
-//     style.width = style.height = `${INITIAL_SIZE + idx * 10}px`;
-//     style.backgroundColor = utils.getRandomHexColor();
-
-//     return box;
-//   });
-
-//   rootRef?.append(...boxes);
-
-//   return boxes;
-// };
