@@ -18,7 +18,7 @@ const getFormData = (form, onValidationError) => {
   return result;
 };
 
-const onFormSubmit = e => {
+document.querySelector(".login-form")?.addEventListener("submit", e => {
   e.preventDefault();
 
   const { currentTarget: form } = e;
@@ -28,6 +28,4 @@ const onFormSubmit = e => {
     console.log("formData", formData);
     form.reset();
   }
-};
-
-document.querySelector(".login-form")?.addEventListener("submit", onFormSubmit);
+});
