@@ -17,13 +17,12 @@ const createBoxes = (amount, rootRef) => {
     "beforeend",
     Array.from({ length: amount }, (_, idx) => {
       const size = `${INITIAL_SIZE + idx * SIZE_INC}px`;
-      const color = utils.getRandomHexColor();
 
       return `
         <div style="
           width: ${size}; 
           height: ${size}; 
-          background-color: ${color}">
+          background-color: ${utils.getRandomHexColor()}">
         </div>`;
     }).join(""),
   );
