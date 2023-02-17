@@ -30,6 +30,8 @@ const createBoxes = (amount, rootRef) => {
 
 const destroyBoxes = rootRef => (rootRef.innerHTML = "");
 
+refs.amountInput.value = 1;
+
 refs.amountInput.addEventListener("input", ({ currentTarget: amountInput }) => {
   const { min, value, max } = amountInput;
   amountInput.value = Math.max(min, Math.min(max, value));
