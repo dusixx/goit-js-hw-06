@@ -1,15 +1,19 @@
 import { ingredients } from "./utils.js";
 
 const fillList = (listSelector, ingredients) => {
-  const items = ingredients.map(name => {
-    const li = document.createElement("li");
-    li.textContent = name;
-    li.classList.add("item");
+  const listRef = document.querySelector(listSelector);
 
-    return li;
-  });
+  listRef?.append(
+    ...ingredients.map(name => {
+      const li = document.createElement("li");
+      li.textContent = name;
+      li.classList.add("item");
 
-  document.querySelector(listSelector)?.append(...items);
+      return li;
+    }),
+  );
+
+  return listRef;
 };
 
 fillList("#ingredients", ingredients);

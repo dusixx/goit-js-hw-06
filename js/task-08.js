@@ -18,10 +18,10 @@ const getFormData = (form, onValidationError) => {
   return result;
 };
 
-const onFormSubmit = event => {
-  event.preventDefault();
+const onFormSubmit = e => {
+  e.preventDefault();
 
-  const { currentTarget: form } = event;
+  const { currentTarget: form } = e;
   const formData = getFormData(form, onValidationError);
 
   if (formData) {
