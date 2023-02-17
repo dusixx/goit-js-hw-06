@@ -1,15 +1,11 @@
-import { default as utils } from "./utils.js";
+import { utils } from "./utils.js";
 
 const DEFAULT_USERNAME = "Anonymous";
+const nameInputRef = document.querySelector("#name-input");
+const nameOutputRef = document.querySelector("#name-output");
 
-const refs = {
-  nameInput: document.querySelector("#name-input"),
-  nameOutput: document.querySelector("#name-output"),
-};
-
-const onNameInput = ({ currentTarget: nameInputRef }) => {
-  const newName = utils.capitalize(nameInputRef.value.trim());
-  refs.nameOutput.textContent = newName || DEFAULT_USERNAME;
-};
-
-refs.nameInput.addEventListener("input", onNameInput);
+nameInputRef.addEventListener(
+  "input",
+  ({ currentTarget: { value: name } }) =>
+    (nameOutputRef.textContent = utils.capitalize(name.trim()) || DEFAULT_USERNAME),
+);

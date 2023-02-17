@@ -1,4 +1,4 @@
-import { default as utils } from "./utils.js";
+import { utils } from "./utils.js";
 
 const refs = {
   body: document.body,
@@ -8,7 +8,7 @@ const refs = {
 
 const onColorButtonClick = () => {
   const hexColor = utils.getRandomHexColor();
-  
+
   refs.body.style.backgroundColor = hexColor;
   refs.colorSpan.textContent = hexColor;
 };

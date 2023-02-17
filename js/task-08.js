@@ -19,10 +19,6 @@ const getFormData = (form, onValidationError) => {
   return result;
 };
 
-////////////////////////
-// event handlers
-////////////////////////
-
 const onFormSubmit = event => {
   event.preventDefault();
 

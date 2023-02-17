@@ -1,4 +1,4 @@
-const ingredients = ["Potatoes", "Mushrooms", "Garlic", "Tomatos", "Herbs", "Condiments"];
+import { ingredients } from "./utils.js";
 
 const fillList = (listSelector, ingredients) => {
   const items = ingredients.map(name => {

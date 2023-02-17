@@ -1,12 +1,9 @@
-const refs = {
-  fontSizeInput: document.querySelector("#font-size-control"),
-  text: document.querySelector("#text"),
-};
+const fontSizeRef = document.querySelector("#font-size-control");
+const textRef = document.querySelector("#text");
 
 const onFontSizeInput = ({ currentTarget: { value } }) => {
-  refs.text.style.fontSize = `${value}px`;
+  textRef.style.fontSize = `${value}px`;
 };
 
-// инициализируем текущим
-refs.text.style.fontSize = `${refs.fontSizeInput.value}px`;
-refs.fontSizeInput.addEventListener("input", onFontSizeInput);
+textRef.style.fontSize = `${fontSizeRef.value}px`;
+fontSizeRef.addEventListener("input", onFontSizeInput);

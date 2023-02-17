@@ -1,19 +1,12 @@
 const counterRef = document.querySelector("#counter");
-
-const refs = {
-  counter: counterRef,
-  decrementBtn: counterRef.firstElementChild,
-  incrementBtn: counterRef.lastElementChild,
-  counterValue: counterRef.children[1],
-};
+const decBtnRef = counterRef.firstElementChild;
+const incBtnRef = counterRef.lastElementChild;
+const counterValueRef = counterRef.children[1];
 
 let counterValue = 0;
 
-const onIncrementButtonClick = () => (refs.counterValue.textContent = counterValue += 1);
-const onDecrementButtonClick = () => (refs.counterValue.textContent = counterValue -= 1);
-
-refs.incrementBtn.addEventListener("click", onIncrementButtonClick);
-refs.decrementBtn.addEventListener("click", onDecrementButtonClick);
+incBtnRef.addEventListener("click", () => (counterValueRef.textContent = counterValue += 1));
+decBtnRef.addEventListener("click", () => (counterValueRef.textContent = counterValue -= 1));
 
 //
 // Вариант 2
@@ -27,5 +20,5 @@ refs.decrementBtn.addEventListener("click", onDecrementButtonClick);
 //   refs.counterValue.textContent = counterValue;
 // };
 
-// refs.incrementBtn.addEventListener("click", onIncrementButtonClick);
-// refs.decrementBtn.addEventListener("click", onIncrementButtonClick);
+// refs.incBtn.addEventListener("click", onIncrementButtonClick);
+// refs.decBtn.addEventListener("click", onIncrementButtonClick);

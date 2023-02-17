@@ -1,8 +1,5 @@
-import { default as utils } from "./utils.js";
+import { utils } from "./utils.js";
 
-//
-// Вариант 1
-//
 const onInputBlur = ({ currentTarget: inputRef }) => {
   const validLen = Number(inputRef.dataset.length);
   const currentLen = inputRef.value.length;
@@ -11,11 +8,8 @@ const onInputBlur = ({ currentTarget: inputRef }) => {
     return inputRef.classList.remove("valid", "invalid");
   }
 
-  if (currentLen === validLen) {
-    utils.replaceClass(inputRef, "invalid", "valid");
-  } else {
-    utils.replaceClass(inputRef, "valid", "invalid");
-  }
+  const cls = currentLen === validLen ? ["invalid", "valid"] : ["valid", "invalid"];
+  utils.replaceClass(inputRef, ...cls);
 };
 
 document.querySelector("#validation-input")?.addEventListener("blur", onInputBlur);
