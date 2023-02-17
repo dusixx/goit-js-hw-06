@@ -16,6 +16,10 @@ export const utils = {
   replaceClass({ classList }, oldClass, newClass) {
     if (!classList.replace(oldClass, newClass)) classList.add(newClass);
   },
+
+  fitIntoRange(v, min, max) {
+    return Math.max(min, Math.min(max, v));
+  },
 };
 
 export const galleryItems = [
