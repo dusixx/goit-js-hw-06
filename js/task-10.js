@@ -1,13 +1,9 @@
 import { utils } from "./utils.js";
 
-const INITIAL_BOXES_AMOUNT = 1;
 const boxesRef = document.querySelector("#boxes");
 const [amountRef, createBtnRef, destroyBtnRef] = document.querySelector("#controls")?.children;
 
-amountRef.value = amountRef.min || INITIAL_BOXES_AMOUNT;
-
-amountRef.addEventListener("input", ({ currentTarget: amountInput }) => {
-  const { min, value, max } = amountInput;
+amountRef.addEventListener("input", ({ target: { min, value, max } }) => {
   amountInput.value = utils.fitIntoRange(value, min, max);
 });
 
@@ -16,9 +12,13 @@ createBtnRef.addEventListener("click", () => {
 });
 
 destroyBtnRef.addEventListener("click", () => {
-  amountRef.value = amountRef.min || INITIAL_BOXES_AMOUNT;
+  amountRef.value = amountRef.min;
   destroyBoxes(boxesRef);
 });
+
+function destroyBoxes(rootRef) {
+  rootRef.innerHTML = "";
+}
 
 function createBoxes(amount, rootRef) {
   const INITIAL_SIZE = 30;
@@ -37,8 +37,4 @@ function createBoxes(amount, rootRef) {
         </div>`;
     }).join(""),
   );
-}
-
-function destroyBoxes(rootRef) {
-  rootRef.innerHTML = "";
 }
