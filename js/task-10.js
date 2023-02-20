@@ -3,8 +3,8 @@ import { utils } from "./utils.js";
 const boxesRef = document.querySelector("#boxes");
 const [amountRef, createBtnRef, destroyBtnRef] = document.querySelector("#controls")?.children;
 
-amountRef.addEventListener("input", ({ target: { min, value, max } }) => {
-  amountInput.value = utils.fitIntoRange(value, min, max);
+amountRef.addEventListener("input", ({ currentTarget: amountInput }) => {
+  amountInput.value = utils.fitIntoRange(amountInput);
 });
 
 createBtnRef.addEventListener("click", () => {

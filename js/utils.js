@@ -17,8 +17,8 @@ export const utils = {
     if (!classList.replace(oldClass, newClass)) classList.add(newClass);
   },
 
-  fitIntoRange(v, min, max) {
-    return Math.max(min, Math.min(max, v));
+  fitIntoRange({ value, min, max }) {
+    return Math.max(min, Math.min(max, value));
   },
 };
 
